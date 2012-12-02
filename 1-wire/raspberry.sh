@@ -16,7 +16,8 @@ VERSION="1.00"
 lsusb
 apt-get install owserver ow-shell owhttpd owfs-fuse
 
-wget 
+wget https://github.com/Hotfirenet/Raspberry-pi/blob/master/1-wire/owfs.conf
+mv owfs.conf /etc/
 
 mkdir /mnt/1wire/
 owfs -s localhost:4304 -m /mnt/1wire/
