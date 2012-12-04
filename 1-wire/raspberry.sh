@@ -8,18 +8,18 @@
 
 VERSION="1.00"
 
-#=============================================================================
-# Liste des applications installés par le script
-# A adapter à vos besoins...
-#-----------------------------------------------------------------------------
+if [ `lsusb | grep -c "DDallas Semiconductor DS1490F"` == 1 ]
+	then
+		apt-get install owserver ow-shell owhttpd owfs-fuse;
 
-lsusb
-apt-get install owserver ow-shell owhttpd owfs-fuse
+		wget https://github.com/Hotfirenet/Raspberry-pi/blob/master/1-wire/owfs.conf;
+		mv owfs.conf /etc/;
 
-wget https://github.com/Hotfirenet/Raspberry-pi/blob/master/1-wire/owfs.conf
-mv owfs.conf /etc/
+		mkdir /mnt/1wire/;
+		owfs -s localhost:4304 -m /mnt/1wire/;
 
-mkdir /mnt/1wire/
-owfs -s localhost:4304 -m /mnt/1wire/
-
-/etc/init.d/owserver restart
+		/etc/init.d/owserver restart;
+	else 
+		echo il faut connecter le DS1490
+fi
+		
