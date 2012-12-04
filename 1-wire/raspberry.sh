@@ -8,7 +8,7 @@
 
 VERSION="1.00"
 
-if [ `lsusb | grep -c "DDallas Semiconductor DS1490F"` == 1 ]
+if [ `lsusb | grep -c "Dallas Semiconductor DS1490F"` == 1 ]
 	then
 		apt-get install owserver ow-shell owhttpd owfs-fuse;
 
